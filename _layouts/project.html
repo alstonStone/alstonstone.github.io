@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+{% if page.status %}<p class="project-status">{{ page.status }}</p>{% endif %}
+<div class="centered-image">
+  <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="400">
+</div>
+{{ content }}
+<p><a href="{{ '/projects/' | relative_url }}">&larr; All projects</a></p>

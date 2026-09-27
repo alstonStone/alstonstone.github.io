@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <div class="page-wrapper">
+    {% include nav.html %}
+    <main class="main-content">
+      <div class="content-inner">
+        <!-- Each page's own content gets dropped in here. -->
+        {{ content }}
+      </div>
+    </main>
+  </div>
+</body>
+</html>

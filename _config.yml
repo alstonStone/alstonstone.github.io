@@ -1,0 +1,22 @@
+# _config.yml - site-wide settings. (Restart `jekyll serve` after editing.)
+title: Your Name
+
+# Leave empty for a user site (username.github.io).
+# For a project site, set to "/your-repo-name".
+baseurl: ""
+
+# Blog post URLs will look like /blog/2026/01/15/hello-world/
+permalink: /blog/:year/:month/:day/:title/
+
+# A "collection" is a folder (_projects) where each file becomes its own page.
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Default front matter, so each file doesn't have to repeat "layout:".
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: "post" }
+  - scope: { path: "", type: "projects" }
+    values: { layout: "project" }

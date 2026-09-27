@@ -1,0 +1,19 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+<h1>Projects</h1>
+
+<!-- Loops over every file in the _projects folder, newest date first.
+     Add a file there and it shows up here automatically. -->
+{% assign sorted_projects = site.projects | sort: "date" | reverse %}
+<div class="project-grid">
+  {% for project in sorted_projects %}
+    <a class="project-card" href="{{ project.url | relative_url }}">
+      <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+      <h3>{{ project.title }}</h3>
+      {% if project.status %}<p class="project-status">{{ project.status }}</p>{% endif %}
+    </a>
+  {% endfor %}
+</div>

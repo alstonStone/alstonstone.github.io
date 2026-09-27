@@ -1,0 +1,272 @@
+/* ==========================================================================
+   style.css
+   One shared stylesheet used by index.html, about.html, and blog.html.
+   It's split into clearly labeled sections so you can find things fast:
+
+     1. Variables      - colors, fonts, spacing kept in one place
+     2. Reset          - small tweaks to browser defaults
+     3. Page layout    - the sidebar + main content two-column layout
+     4. Sidebar        - the left-side navigation panel
+     5. Main content   - headings, paragraphs, links, images
+     6. Blog specific  - styles just for the list of blog posts
+     7. Small screens  - adjustments for narrow / mobile windows
+   ========================================================================== */
+
+
+/* 1. Variables
+   -----------------------------------------------------------------------
+   CSS variables (the --name values below) are just labels for values you
+   reuse a lot. Change a color here and it updates everywhere on the site. */
+:root {
+  --color-background: #ffffff;
+  --color-sidebar-background: #f5f5f4;
+  --color-text: #2b2b2b;
+  --color-text-muted: #6b6b6b;
+  --color-border: #dddddd;
+  --color-link: #1a5fb4;
+  --color-link-visited: #6a3fa0;
+
+  --font-body: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --sidebar-width: 220px;
+  --content-max-width: 680px;
+  --spacing: 1.5rem;
+}
+
+
+/* 2. Reset
+   -----------------------------------------------------------------------
+   Browsers apply their own default spacing/sizes. This just clears the
+   parts that most often get in the way, without hiding everything. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* 3. Page layout
+   -----------------------------------------------------------------------
+   Every page wraps its content in <div class="page-wrapper"> which holds
+   the sidebar and the main content side by side using flexbox. */
+.page-wrapper {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+
+/* 4. Sidebar
+   -----------------------------------------------------------------------
+   The left navigation panel. It stays a fixed width and sticks to the
+   top of the viewport as you scroll. */
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background-color: var(--color-sidebar-background);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing) 1rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-header h2 {
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-bottom: 0.5rem;
+}
+
+.nav-links a {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  background-color: var(--color-border);
+}
+
+/* Add class="active" to the current page's link in the HTML
+   (each page already does this) to highlight where you are. */
+.nav-links a.active {
+  background-color: var(--color-border);
+  font-weight: 600;
+}
+
+
+/* 5. Main content
+   -----------------------------------------------------------------------
+   The right-hand column. Text is kept to a comfortable reading width and
+   centered in the available space; images are centered too. */
+.main-content {
+  flex-grow: 1;
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.content-inner {
+  width: 100%;
+  max-width: var(--content-max-width);
+}
+
+.main-content h1 {
+  font-size: 1.8rem;
+  margin-top: 0;
+}
+
+.main-content h2 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
+
+.main-content p {
+  margin: 0 0 1rem 0;
+}
+
+.main-content a {
+  color: var(--color-link);
+}
+
+.main-content a:visited {
+  color: var(--color-link-visited);
+}
+
+/* A simple wrapper to center a single image, e.g. a profile photo. */
+.centered-image {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.centered-image img {
+  border-radius: 6px;
+}
+
+.centered-image p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+
+/* 6. Blog specific
+   -----------------------------------------------------------------------
+   Styles for the list of posts that blog.js builds on the blog page. */
+.post {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.post-date {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.post-content p {
+  margin: 0 0 0.9rem 0;
+}
+
+/* Shown while blog.js is fetching posts, or if something goes wrong. */
+.blog-status {
+  color: var(--color-text-muted);
+}
+
+
+/* 7. Small screens
+   -----------------------------------------------------------------------
+   Below 700px, stack the sidebar on top of the content instead of beside
+   it, since there usually isn't room for both side by side. */
+@media (max-width: 700px) {
+  .page-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .main-content {
+    padding: 2rem 1.25rem;
+  }
+}
+
+
+/* 8. Projects
+   -----------------------------------------------------------------------
+   The grid of project pictures + titles on the Projects page.
+   auto-fill means "fit as many 200px-wide columns as the space allows". */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing);
+}
+
+.project-card {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;          /* crops images so they all match in size */
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.project-card h3 {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.05rem;
+}
+
+.project-card:hover h3 {
+  text-decoration: underline;
+}
+
+.project-status {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
