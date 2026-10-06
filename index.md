@@ -10,4 +10,4 @@ title: Home
 
 Welcome to my website/blog! Check out my
 [projects]({{ '/projects/' | relative_url }}) to see what I'm working on,
-or read [blog]({{ '/blog/' | relative_url }}) to see whats on my mind.
+or read my [blog]({{ '/blog/' | relative_url }}) to see whats on my mind.
