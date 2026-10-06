@@ -1,5 +1,5 @@
 # _config.yml - site-wide settings. (Restart `jekyll serve` after editing.)
-title: Your Name
+title: Alston Stone
 
 # Leave empty for a user site (username.github.io).
 # For a project site, set to "/your-repo-name".
@@ -13,6 +13,11 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
+
+collections:
+  projects:
+    output: true
+    permalink: /games/:name/
 
 # Default front matter, so each file doesn't have to repeat "layout:".
 defaults:
