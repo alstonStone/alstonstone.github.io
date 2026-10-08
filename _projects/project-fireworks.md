@@ -1,8 +1,8 @@
 ---
 title: PICO-8 Fireworks
-date: 2026-10-2026
+date: 2026-10-08
 status: Playable
-image: /assets/images/projects/joust.gif
+image: /assets/images/projects/fireworks.gif
 ---
 I'm still having fun with PICO-8. This project was mainly about learning menu navigation systems.
 I also wanted to try out importing seperate lua files to keep my code organized. I belive it had the intended result. 
